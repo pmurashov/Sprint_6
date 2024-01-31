@@ -8,7 +8,6 @@ from pages.main_page import MainPage
 
 @allure.feature('Заказ самоката')
 class TestScooterOrder:
-
     @allure.title('Тест заказа доставки самоката')
     @allure.description('Прохождение полного позитивного сценария заказа самоката')
     @pytest.mark.parametrize('customer_data, subway_station, rental_data, duration, color_button',
@@ -21,10 +20,9 @@ class TestScooterOrder:
                                ("04.02.2024", "Привезите ещё тако"), OrderPageLocators.DROPDOWN_TWO_DAYS,
                                OrderPageLocators.SCOOTER_COLOR_GREY]])
     @pytest.mark.parametrize("order_button", [MainPageLocators.HEADER_ORDER_BUTTON, MainPageLocators.ORDER_BUTTON])
-    def test_order_scooter(self, driver, url, order_button, customer_data, subway_station, rental_data, duration,
+    def test_order_scooter(self, driver, order_button, customer_data, subway_station, rental_data, duration,
                            color_button):
         main_page = MainPage(driver)
-        main_page.go_to_site(url)
         main_page.click_on_order_button(order_button)
         order_page = OrderPage(driver)
         order_page.fill_out_order_form(*customer_data, subway_station)

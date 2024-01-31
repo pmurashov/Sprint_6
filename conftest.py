@@ -7,10 +7,6 @@ from selenium import webdriver
 def driver():
     driver = webdriver.Firefox()
     driver.maximize_window()
+    driver.get("https://qa-scooter.praktikum-services.ru/")
     yield driver
     driver.quit()
-
-
-@pytest.fixture
-def url():
-    return "https://qa-scooter.praktikum-services.ru/"
